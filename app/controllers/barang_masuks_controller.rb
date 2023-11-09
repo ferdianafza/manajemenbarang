@@ -9,7 +9,10 @@ class BarangMasuksController < ApplicationController
                     else
                      BarangMasuk.all
                     end
-
+    @barangMasukPerHari = BarangMasuk.getTotalBarangMasukPerHari
+    @barangMasukPerMinggu = BarangMasuk.getTotalBarangMasukPerMinggu
+    @barangMasukPerBulan = BarangMasuk.getTotalBarangMasukPerBulan
+    @barangMasukPerTahun = BarangMasuk.getTotalBarangMasukPerTahun
   end
 
   private
