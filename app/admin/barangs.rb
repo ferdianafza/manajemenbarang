@@ -5,7 +5,7 @@ ActiveAdmin.register Barang do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :kode_barang, :nama_barang
+  permit_params :kode_barang, :nama_barang, :stok
   #
   # or
   #
@@ -14,5 +14,9 @@ ActiveAdmin.register Barang do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  filter :kode_barang
+  filter :nama_barang
+  # filter :nama_barang, as: :select, collection: -> { Barang.distinct.pluck(:nama_barang) }
+  filter :stok
 
 end
