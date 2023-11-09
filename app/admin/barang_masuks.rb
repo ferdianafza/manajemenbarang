@@ -31,4 +31,29 @@ ActiveAdmin.register BarangMasuk do
     f.actions
   end
 
+  controller do
+    def create
+      super do |format|
+        # Lakukan penambahan stok barang
+        update_stok_barang(resource.barang, resource.jumlah) if resource.valid?
+      end
+    end
+
+    private
+
+    def update_stok_barang(barang, jumlah)
+      # Dapatkan objek Barang
+      barang = Barang.find(barang.id)
+
+      # Set default value for stok if it is nil
+      barang.stok ||= 0
+
+      # Tambahkan stok sesuai jumlah
+      barang.stok += jumlah
+
+      # Simpan perubahan
+      barang.save
+    end
+  end
+
 end
