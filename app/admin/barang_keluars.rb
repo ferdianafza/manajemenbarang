@@ -31,4 +31,25 @@ ActiveAdmin.register BarangKeluar do
     f.actions
   end
 
+  filter :barang, collection: proc { Barang.all.map{|u| [u.nama_barang, u.id]} }
+  filter :jumlah
+  filter :waktu
+  filter :created_at
+  
+  controller do
+    def create
+      super do |format|
+        update_stok_barang(resource.barang, resource.jumlah) if resource.valid?
+      end
+    end
+
+    private
+
+    def update_stok_barang(barang, jumlah)
+      barang = Barang.find(barang.id)
+      barang.stok = barang.stok.to_i - jumlah.to_i
+      barang.save
+    end
+  end
+
 end
