@@ -4,7 +4,7 @@ class Barang < ApplicationRecord
 
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "id", "kode_barang", "nama_barang", "updated_at"]
+    ["created_at", "id", "kode_barang", "nama_barang", "stok", "updated_at"]
   end
 
   def self.ransackable_associations(auth_object = nil)
