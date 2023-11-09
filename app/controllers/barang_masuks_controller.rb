@@ -5,9 +5,9 @@ class BarangMasuksController < ApplicationController
   def index
 
     @listBarangMasuk = if params[:created_at].present?
-                     BarangMasuk.filter_by_masuk(params[:created_at])
+                     BarangMasuk.filter_by_masuk(params[:created_at]).page params[:page]
                     else
-                     BarangMasuk.all
+                     BarangMasuk.all.page params[:page]
                     end
     @barangMasukPerHari = BarangMasuk.getTotalBarangMasukPerHari
     @barangMasukPerMinggu = BarangMasuk.getTotalBarangMasukPerMinggu
