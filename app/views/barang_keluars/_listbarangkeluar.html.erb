@@ -1,0 +1,24 @@
+<div id="barang_keluar">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id Masuk</th>
+        <th scope="col">Kode Barang</th>
+        <th scope="col">Nama Barang</th>
+        <th scope="col">Tanggal keluar</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @listBarangKeluar.each do |barangMasuk| %>
+        <tr>
+          <th scope="row"><%= barangMasuk.id %></th>
+          <td><%= barangMasuk.barang.kode_barang %></td>
+          <td><%= barangMasuk.barang.nama_barang %></td>
+          <td><%= barangMasuk.waktu.to_date.strftime("%A, %d %B %Y") %></td>
+
+          <td><%=  %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

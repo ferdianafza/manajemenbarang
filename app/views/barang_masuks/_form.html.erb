@@ -1,0 +1,32 @@
+<%= form_with(model: barang_masuk) do |form| %>
+  <% if barang_masuk.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(barang_masuk.errors.count, "error") %> prohibited this barang_masuk from being saved:</h2>
+
+      <ul>
+        <% barang_masuk.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :barang, style: "display: block" %>
+    <%= form.text_field :barang %>
+  </div>
+
+  <div>
+    <%= form.label :jumlah, style: "display: block" %>
+    <%= form.text_field :jumlah %>
+  </div>
+
+  <div>
+    <%= form.label :waktu, style: "display: block" %>
+    <%= form.text_field :waktu %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

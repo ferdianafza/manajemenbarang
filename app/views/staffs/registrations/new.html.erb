@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag("auth/auth") %>
+
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+      <br>
+      <br>
+      <center>
+        <h2>Sign Up</h2>
+      </center>
+			<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+          <%= f.email_field :email,class: "login__input",placeholder:"Email", autofocus: true, autocomplete: "email" %>
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+          <%= f.password_field :password,class: "login__input",placeholder:"Password", autocomplete: "new-password" %>
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+          <%= f.password_field :password_confirmation,class: "login__input",placeholder:"Confirmation Password", autocomplete: "new-password" %>
+				</div>
+        <div class="">
+          <%= f.submit "Sign up", class: "button login__submit" %>
+        </div>
+        <%= render "staffs/shared/links" %>
+			<% end %>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>
+	</div>
+</div>

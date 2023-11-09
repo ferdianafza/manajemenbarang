@@ -1,0 +1,19 @@
+id:
+  date:
+    day_names:
+      - Senin
+      - Selasa
+      - Rabu
+      - Kamis
+      - Jumat
+      - Sabtu
+      - Minggu
+
+    abbr_day_names:
+      - Sen
+      - Sel
+      - Rab
+      - Kam
+      - Jum
+      - Sab
+      - Min

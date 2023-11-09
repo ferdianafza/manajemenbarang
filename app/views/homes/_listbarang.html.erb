@@ -1,0 +1,23 @@
+<div id="barangs">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Kode Barang</th>
+        <th scope="col">Nama Barang</th>
+        <th scope="col">Stok</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @listbarang.each do |barang| %>
+        <tr>
+          <th scope="row"><%= barang.kode_barang %></th>
+          <td><%= barang.nama_barang %></td>
+          <td><%=  %></td>
+        </tr>
+          <!-- <p>
+            <%= link_to "Show this barang", barang %>
+          </p> -->
+        <% end %>
+    </tbody>
+  </table>
+</div>

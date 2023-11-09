@@ -1,0 +1,23 @@
+<div id="barang_masuk">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id Masuk</th>
+        <th scope="col">Kode Barang</th>
+        <th scope="col">Nama Barang</th>
+        <th scope="col">Tanggal Masuk</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @listBarangMasuk.each do |barangMasuk| %>
+        <tr>
+          <th scope="row"><%= barangMasuk.id %></th>
+          <td><%= barangMasuk.barang.kode_barang %></td>
+          <td><%= barangMasuk.barang.nama_barang %></td>
+          <td><%= barangMasuk.barang.created_at %></td>
+          <td><%=  %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
