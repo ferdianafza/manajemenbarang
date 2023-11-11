@@ -1,6 +1,8 @@
 class BarangKeluar < ApplicationRecord
   belongs_to              :barang
 
+  paginates_per 10
+
   scope :filter_by_keluar, ->(created_at) { where(waktu: created_at) }
 
   def self.ransackable_attributes(auth_object = nil)

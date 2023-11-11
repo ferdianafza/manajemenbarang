@@ -1,0 +1,19 @@
+<div id="barangs">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Kode Barang</th>
+        <th scope="col">Nama Barang</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @listBarangKosong.each do |barangKosong| %>
+        <tr>
+          <th scope="row"><%= barangKosong.kode_barang %></th>
+          <td><%= barangKosong.nama_barang %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+  <%= paginate @listBarangKosong %>
+</div>

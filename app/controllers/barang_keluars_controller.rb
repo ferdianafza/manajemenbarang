@@ -4,9 +4,9 @@ class BarangKeluarsController < ApplicationController
 
   def index
     @listBarangKeluar = if params[:created_at].present?
-                          BarangKeluar.filter_by_keluar(params[:created_at])
+                          BarangKeluar.filter_by_keluar(params[:created_at]).page params[:page]
                         else
-                          BarangKeluar.all
+                          BarangKeluar.all.page params[:page]
                         end
     @barangKeluarPerHari = BarangKeluar.getTotalBarangKeluarPerHari
     @barangKeluarPerMinggu = BarangKeluar.getTotalBarangKeluarPerMinggu

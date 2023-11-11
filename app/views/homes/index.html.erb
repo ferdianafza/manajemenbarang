@@ -42,7 +42,7 @@
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
         <div class="w3-left"><i class="fa-regular fa-circle-xmark w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>50</h3>
+          <h3><%= @getTotalBarangKosong%></h3>
         </div>
         <div class="w3-clear"></div>
         <h4>Total Barang Kosong</h4>
@@ -52,44 +52,29 @@
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
-      <%= form_tag homes_path, :method => 'get' do %>
-        <p>
-          <div class="input-group">
-            <%= text_field_tag :search, params[:search], class: "form form-control input-70", placeholder: "Masukan Nama Barang Untuk Mencari..." %>
-            <span class="input-group-btn">
-              <%= submit_tag "Search", name: nil, class: "btn btn-info" %>
-            </span>
-          </div>
-        </p>
-      <% end %>
-      <%= render "listbarang", barang: @listbarang %>
+      <!-- Add these tabs in your HTML -->
+      <ul class="nav nav-tabs" id="barangTabs">
+        <li class="nav-item">
+          <a class="nav-link active" id="tabListBarang" data-toggle="tab" href="#barangsListBarang">List Barang</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="tabListBarangKosong" data-toggle="tab" href="#barangsListBarangKosong">List Barang Kosong</a>
+        </li>
+      </ul>
+
+      <!-- Tab content -->
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="barangsListBarang">
+          <h3>Data Barang </h3>
+          <%= render "listbarang", barang: @listbarang %>
+        </div>
+
+        <div class="tab-pane fade" id="barangsListBarangKosong">
+          <h3>Data Barang Kosong</h3>
+          <%= render "listbarangkosong", barang: @listBarangKosong %>
+        </div>
+      </div>
     </div>
   </div>
   <hr>
-  <!-- End page content -->
-
-
-<script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
-
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
-  }
-}
-
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
-</script>
+  <%= javascript_include_tag 'movetab' %>

@@ -1,22 +1,35 @@
 ActiveAdmin.register Barang do
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
+  Formtastic::FormBuilder.perform_browser_validations = true
   permit_params :kode_barang, :nama_barang, :stok
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:kode_barang, :nama_barang]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+
+  before_build do |barang|
+    barang.stok ||= 0
+  end
+
+  form do |f|
+    f.inputs do
+      f.input :kode_barang
+      f.input :nama_barang
+      f.input :stok, input_html: { readonly: true }
+    end
+    f.actions
+  end
+
   filter :kode_barang
   filter :nama_barang
-  # filter :nama_barang, as: :select, collection: -> { Barang.distinct.pluck(:nama_barang) }
   filter :stok
 
+  scope "Stok Lebih dari 0", :stok_lebih_dari_0, default: true do |barangs|
+    barangs.where('stok > 0')
+  end
+
+  scope "Stok 0", :stok_0 do |barangs|
+    barangs.where(stok: 0)
+  end
+
+  csv do
+    column :kode_barang
+    column :nama_barang
+    column :stok
+  end
 end
